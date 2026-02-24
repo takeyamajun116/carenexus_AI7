@@ -3,61 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareNexus - Audit & Educate Platform</title>
+    <title>CareNexus - ToDo OJT & Ladder</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; background-color: #F8FAFC; }
-        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-
-        /* Typing Animation for AI */
-        .typing-indicator span {
-            display: inline-block;
-            width: 6px; height: 6px;
-            background-color: #3b82f6;
-            border-radius: 50%;
-            animation: typing 1s infinite alternate;
+        /* Custom Checkbox styles */
+        .todo-checkbox:checked + label {
+            text-decoration: line-through;
+            color: #94a3b8; /* text-slate-400 */
         }
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes typing { from { opacity: 0.3; transform: translateY(0); } to { opacity: 1; transform: translateY(-4px); } }
+        .todo-checkbox:checked + label .badge {
+            opacity: 0.5;
+            filter: grayscale(100%);
+        }
     </style>
 </head>
 <body class="text-slate-800 flex h-screen overflow-hidden">
 
     <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between hidden md:flex z-20 shadow-sm">
         <div>
-            <div class="h-16 flex items-center px-6 border-b border-slate-100 cursor-pointer" onclick="navigate('dashboard')">
-                <img src="CareNexuslogo.png" alt="CareNexus Logo" class="h-8 w-auto">
+            <div class="h-16 flex items-center px-6 border-b border-slate-100 cursor-pointer">
+                <img src="CareNexuslogo.png" alt="CareNexus Logo" class="h-8 w-auto" onerror="this.outerHTML='<h1 class=\'text-xl font-black text-blue-600\'>CareNexus</h1>'">
             </div>
-            <nav class="p-4 space-y-1">
-                <p class="px-3 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 mt-4">Management</p>
-                <button onclick="navigate('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-blue-50 text-blue-700 transition-colors">
-                    <i class="fa-solid fa-chart-pie w-5"></i> 収益×HRダッシュボード
+            <nav class="p-4 space-y-2">
+                <p class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-2">Field Workflow (現場用)</p>
+                <button onclick="navigate('todo')" id="nav-todo" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-blue-700 transition-colors">
+                    <i class="fa-solid fa-list-check w-5 text-lg"></i> 算定 To-Do ナビ
                 </button>
-                <p class="px-3 text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 mt-6">Field Workflow</p>
-                <button onclick="navigate('ai-coach')" id="nav-aicoach" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors relative">
-                    <i class="fa-solid fa-robot w-5"></i> 訪問ナビ＆AI添削
-                    <span class="absolute right-2 bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-full shadow-sm">未記録2件</span>
+                
+                <p class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-6">HR & Management (管理者用)</p>
+                <button onclick="navigate('ladder')" id="nav-ladder" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-600 hover:bg-slate-50 transition-colors">
+                    <i class="fa-solid fa-layer-group w-5 text-lg"></i> 訪看クリニカルラダー
                 </button>
             </nav>
         </div>
         
-        <div class="p-4 border-t border-slate-100">
-            <div class="mt-4 flex items-center gap-3 px-3">
-                <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-700 font-bold text-sm">管</div>
+        <div class="p-4 border-t border-slate-100 bg-slate-50">
+            <div class="flex items-center gap-3 px-2">
+                <img src="https://ui-avatars.com/api/?name=新人+A&background=eff6ff&color=1d4ed8" class="h-8 w-8 rounded-full border border-slate-200">
                 <div class="text-xs">
-                    <p class="font-bold text-slate-700">八王子ステーション</p>
-                    <p class="text-slate-500">管理者 ログイン中</p>
+                    <p class="font-bold text-slate-700">新人 A子 <span class="text-[10px] bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded ml-1">Lv.1</span></p>
+                    <p class="text-slate-500">CareNexus ログイン中</p>
                 </div>
             </div>
         </div>
@@ -66,319 +58,253 @@
     <main class="flex-1 flex flex-col h-screen overflow-y-auto relative bg-slate-50">
         
         <header class="md:hidden bg-white h-14 border-b border-slate-200 flex items-center px-4 justify-between sticky top-0 z-10">
-            <img src="CareNexuslogo.png" alt="CareNexus Logo" class="h-6 w-auto">
-            <button class="text-slate-500"><i class="fa-solid fa-bars text-lg"></i></button>
+            <h1 class='text-lg font-black text-blue-600'>CareNexus</h1>
+            <div class="flex gap-4">
+                <button onclick="navigate('todo')" class="text-slate-600"><i class="fa-solid fa-list-check"></i></button>
+                <button onclick="navigate('ladder')" class="text-slate-600"><i class="fa-solid fa-layer-group"></i></button>
+            </div>
         </header>
 
-        <div class="p-6 md:p-10 max-w-6xl mx-auto w-full">
+        <div class="p-4 md:p-8 max-w-5xl mx-auto w-full">
 
-            <div id="view-dashboard" class="fade-in">
-                <div class="mb-8">
-                    <h1 class="text-2xl font-bold text-slate-800">収益回収 × スタッフ成長 ダッシュボード</h1>
-                    <p class="text-slate-500 text-sm mt-1">AI添削によって防いだ算定漏れ（収益）と、スタッフの自走度（教育効果）を可視化します。</p>
+            <div id="view-todo" class="fade-in">
+                <div class="mb-6 flex justify-between items-end">
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-800">本日の算定 To-Do</h1>
+                        <p class="text-slate-500 text-sm mt-1">レセコン入力前に、加算要件の「観察・記録漏れ」がないかチェックしましょう。</p>
+                    </div>
+                    <div class="hidden md:block text-sm font-bold text-slate-500 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
+                        <i class="fa-regular fa-calendar text-blue-500 mr-2"></i> 2026年 2月25日
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between relative overflow-hidden">
-                        <div class="absolute -right-4 -top-4 text-green-50 opacity-50"><i class="fa-solid fa-yen-sign text-8xl"></i></div>
-                        <div class="relative z-10">
-                            <div class="flex items-center gap-2 mb-2">
-                                <span class="bg-green-100 text-green-700 p-1.5 rounded text-xs font-bold"><i class="fa-solid fa-shield-halved"></i> 取零し防御</span>
-                                <span class="text-slate-500 text-xs font-medium">当月累計</span>
-                            </div>
-                            <p class="text-slate-500 text-sm font-bold">AI添削による加算回収額</p>
-                            <h3 class="text-3xl font-bold text-slate-800 mt-1">+¥185,000</h3>
-                            <p class="text-xs text-green-600 mt-2 font-bold">防御成功: 37件（前月比 +12%）</p>
-                        </div>
-                    </div>
+                <div class="flex flex-col md:flex-row gap-6">
                     
-                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col justify-between">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-blue-100 text-blue-700 p-1.5 rounded text-xs font-bold"><i class="fa-solid fa-chalkboard-user"></i> 教育効果</span>
-                            <span class="text-slate-500 text-xs font-medium">事業所平均</span>
+                    <div class="w-full md:w-1/3 flex flex-col gap-3">
+                        <div class="bg-white p-4 rounded-xl shadow-sm border-2 border-blue-500 cursor-pointer relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-blue-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg">訪問中</div>
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">佐藤 一郎 様</h3>
+                            <p class="text-xs text-slate-500 mb-3"><i class="fa-solid fa-clock mr-1"></i> 10:00 - 11:00</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-orange-100 text-orange-700 border border-orange-200 text-[10px] font-bold px-2 py-1 rounded">特管加算(Ⅱ) 対象</span>
+                            </div>
                         </div>
-                        <p class="text-slate-500 text-sm font-bold">AI添削率（差し戻し発生率）</p>
-                        <h3 class="text-3xl font-bold text-slate-800 mt-1">18.5 <span class="text-lg font-normal text-slate-500">%</span></h3>
-                        <p class="text-xs text-blue-600 mt-2 font-bold"><i class="fa-solid fa-arrow-trend-down"></i> 先月から5%改善（自走化進行中）</p>
+
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 opacity-60 hover:opacity-100 transition cursor-pointer">
+                            <h3 class="font-bold text-slate-800 text-lg mb-1">高橋 花子 様</h3>
+                            <p class="text-xs text-slate-500 mb-3"><i class="fa-solid fa-clock mr-1"></i> 13:30 - 14:30</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-purple-100 text-purple-700 border border-purple-200 text-[10px] font-bold px-2 py-1 rounded">ターミナルケア 対象</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-gradient-to-br from-indigo-600 to-blue-700 p-6 rounded-xl shadow-md text-white flex flex-col justify-between">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="bg-white/20 text-white p-1.5 rounded text-xs font-bold"><i class="fa-solid fa-clock"></i> 業務効率化</span>
+                    <div class="w-full md:w-2/3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
+                        
+                        <div class="p-6 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h2 class="text-xl font-bold text-slate-800 mb-1">特別管理加算(Ⅱ) 必須アクション</h2>
+                                    <p class="text-xs font-bold text-blue-600 bg-blue-50 inline-block px-2 py-1 rounded">対象理由：留置カテーテルの管理</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-3xl font-black text-slate-800" id="progress-text">0</span><span class="text-slate-400 font-bold">/3</span>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                                <div id="progress-bar" class="bg-blue-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                            </div>
                         </div>
-                        <p class="text-blue-100 text-sm font-bold">指導・監査時間の削減</p>
-                        <h3 class="text-3xl font-bold text-white mt-1">- 42 <span class="text-lg font-normal text-blue-200">時間 / 月</span></h3>
-                        <p class="text-[11px] text-blue-100 mt-3 bg-black/20 p-2 rounded leading-tight">
-                            💡 先輩ナースが記録を手直しする時間が大幅に減り、残業代の削減とケア品質の向上に直結しています。
-                        </p>
-                    </div>
-                </div>
 
-                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-                    <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex justify-between items-center">
-                        <h3 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-users text-slate-400 mr-2"></i>スタッフ スキル成長マトリクス</h3>
-                        <button class="text-xs text-blue-600 bg-blue-50 px-3 py-1.5 rounded font-bold hover:bg-blue-100 transition">評価レポート出力</button>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-sm text-left">
-                            <thead class="bg-white text-xs uppercase text-slate-500 border-b border-slate-200">
-                                <tr>
-                                    <th class="px-6 py-4 font-bold">スタッフ名 / 経験</th>
-                                    <th class="px-6 py-4 font-bold">AI添削率 (ミス率)</th>
-                                    <th class="px-6 py-4 font-bold">特別管理加算 理解度</th>
-                                    <th class="px-6 py-4 font-bold">ターミナル加算 理解度</th>
-                                    <th class="px-6 py-4 font-bold">システム評価・ネクストアクション</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4">
-                                        <p class="font-bold text-slate-800">田中 美咲</p>
-                                        <p class="text-xs text-slate-400">経験5年 / リーダー</p>
-                                    </td>
-                                    <td class="px-6 py-4"><span class="text-green-600 font-bold text-lg">2%</span></td>
-                                    <td class="px-6 py-4"><div class="w-full bg-slate-200 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full" style="width: 100%"></div></div></td>
-                                    <td class="px-6 py-4"><div class="w-full bg-slate-200 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full" style="width: 95%"></div></div></td>
-                                    <td class="px-6 py-4 text-xs text-slate-600">ほぼ一発で完璧な記録。完全に自走しています。</td>
-                                </tr>
-                                <tr class="bg-red-50/30 hover:bg-red-50/50">
-                                    <td class="px-6 py-4">
-                                        <p class="font-bold text-slate-800">新人 A子</p>
-                                        <p class="text-xs text-slate-400">入職3ヶ月</p>
-                                    </td>
-                                    <td class="px-6 py-4"><span class="text-red-600 font-bold text-lg">68%</span></td>
-                                    <td class="px-6 py-4"><div class="w-full bg-slate-200 rounded-full h-1.5"><div class="bg-orange-400 h-1.5 rounded-full" style="width: 40%"></div></div></td>
-                                    <td class="px-6 py-4"><div class="w-full bg-slate-200 rounded-full h-1.5"><div class="bg-red-400 h-1.5 rounded-full" style="width: 20%"></div></div></td>
-                                    <td class="px-6 py-4 text-xs font-bold text-red-600">⚠️ 特管加算の皮膚アセスメント漏れが多発。要フォロー。</td>
-                                </tr>
-                                <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4">
-                                        <p class="font-bold text-slate-800">鈴木 健太</p>
-                                        <p class="text-xs text-slate-400">入職8ヶ月</p>
-                                    </td>
-                                    <td class="px-6 py-4"><span class="text-orange-500 font-bold text-lg">24%</span></td>
-                                    <td class="px-6 py-4"><div class="w-full bg-slate-200 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full" style="width: 85%"></div></div></td>
-                                    <td class="px-6 py-4"><div class="w-full bg-slate-200 rounded-full h-1.5"><div class="bg-orange-400 h-1.5 rounded-full" style="width: 50%"></div></div></td>
-                                    <td class="px-6 py-4 text-xs text-slate-600">特管は改善傾向。ターミナルケアの記録精度を強化中。</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="p-2 flex-1 bg-slate-50/50">
+                            
+                            <div class="group flex items-start p-4 hover:bg-white rounded-lg transition-colors border border-transparent hover:border-slate-100 hover:shadow-sm">
+                                <div class="flex items-center h-6">
+                                    <input id="task1" type="checkbox" onchange="updateProgress()" class="todo-checkbox w-5 h-5 text-blue-600 bg-slate-100 border-slate-300 rounded focus:ring-blue-500 cursor-pointer transition-all">
+                                    <label for="task1" class="ml-3 cursor-pointer select-none flex-1 transition-all duration-200 block">
+                                        <span class="text-sm font-bold text-slate-800 block mb-0.5">バルーン挿入部の「皮膚状態」を確認し、記録したか？</span>
+                                        <span class="text-xs text-slate-500 block">例：発赤、腫脹、浸出液の有無など</span>
+                                        
+                                        <div class="mt-2 text-[11px] text-slate-600 bg-blue-50/50 border border-blue-100 p-2.5 rounded-md flex gap-2 items-start badge transition-opacity">
+                                            <i class="fa-solid fa-lightbulb text-blue-500 mt-0.5"></i>
+                                            <p><strong>OJTメモ：</strong> 特管加算は「計画的な管理」を評価します。「問題なし」だけの記載は返戻（監査アウト）対象です。皮膚の視診結果を必ずカルテに残してください。</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="group flex items-start p-4 hover:bg-white rounded-lg transition-colors border border-transparent hover:border-slate-100 hover:shadow-sm">
+                                <div class="flex items-center h-6">
+                                    <input id="task2" type="checkbox" onchange="updateProgress()" class="todo-checkbox w-5 h-5 text-blue-600 bg-slate-100 border-slate-300 rounded focus:ring-blue-500 cursor-pointer transition-all">
+                                    <label for="task2" class="ml-3 cursor-pointer select-none flex-1 transition-all duration-200 block">
+                                        <span class="text-sm font-bold text-slate-800 block mb-0.5">尿の「性状」と「量」を確認し、記録したか？</span>
+                                        <span class="text-xs text-slate-500 block">例：淡黄色、混濁なし、浮遊物なし等</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="group flex items-start p-4 hover:bg-white rounded-lg transition-colors border border-transparent hover:border-slate-100 hover:shadow-sm">
+                                <div class="flex items-center h-6">
+                                    <input id="task3" type="checkbox" onchange="updateProgress()" class="todo-checkbox w-5 h-5 text-blue-600 bg-slate-100 border-slate-300 rounded focus:ring-blue-500 cursor-pointer transition-all">
+                                    <label for="task3" class="ml-3 cursor-pointer select-none flex-1 transition-all duration-200 block">
+                                        <span class="text-sm font-bold text-slate-800 block mb-0.5">カテーテルの「閉塞・屈曲」がないか確認し、記録したか？</span>
+                                        <span class="text-xs text-slate-500 block">例：スムーズに流出していることを確認</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="p-4 border-t border-slate-100 bg-white flex justify-between items-center">
+                            <span class="text-xs font-bold text-slate-400" id="status-msg">未完了の項目があります</span>
+                            <button id="btn-complete" disabled class="bg-slate-200 text-slate-400 px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 cursor-not-allowed">
+                                <i class="fa-solid fa-check"></i> 準備完了（レセコンへ入力）
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="view-aicoach" class="hidden fade-in h-[calc(100vh-8rem)]">
-                <div class="mb-6">
-                    <h1 class="text-2xl font-bold text-slate-800">訪問ナビ ＆ AI要件チェッカー</h1>
-                    <p class="text-slate-500 text-sm mt-1">訪問前のチェックと、記録時のリアルタイム添削で「算定漏れ」を水際で防ぎます。</p>
+            <div id="view-ladder" class="hidden fade-in">
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-slate-800">訪問看護クリニカルラダー</h1>
+                    <p class="text-slate-500 text-sm mt-1">CareNexusが定義する訪看特化のキャリア開発段階。To-Doのクリア実績が、そのままスタッフの評価に直結します。</p>
                 </div>
 
-                <div class="flex flex-col lg:flex-row gap-6 h-full pb-10">
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8 flex flex-col md:flex-row items-center gap-6">
+                    <div class="relative">
+                        <svg class="w-24 h-24 transform -rotate-90">
+                            <circle cx="48" cy="48" r="40" stroke="#f1f5f9" stroke-width="8" fill="none"></circle>
+                            <circle cx="48" cy="48" r="40" stroke="#3b82f6" stroke-width="8" fill="none" stroke-dasharray="251" stroke-dashoffset="100" class="transition-all duration-1000"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <span class="text-2xl font-black text-slate-800">Lv.1</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <h2 class="text-xl font-bold text-slate-800">新人 A子 さん</h2>
+                            <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded">ノービス（業務適応期）</span>
+                        </div>
+                        <p class="text-sm text-slate-500 mb-4">現在、基本的な加算要件（To-Do）をシステムを通じて学習中です。Lv.2への昇格まであと少し！</p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-bold text-slate-600">
+                            <div>
+                                <p class="mb-1">特管加算 自立度</p>
+                                <div class="w-full bg-slate-100 h-1.5 rounded-full"><div class="bg-green-500 h-1.5 rounded-full" style="width: 80%"></div></div>
+                            </div>
+                            <div>
+                                <p class="mb-1">ターミナル 自立度</p>
+                                <div class="w-full bg-slate-100 h-1.5 rounded-full"><div class="bg-orange-400 h-1.5 rounded-full" style="width: 30%"></div></div>
+                            </div>
+                            <div>
+                                <p class="mb-1">To-Do 消化率</p>
+                                <div class="w-full bg-slate-100 h-1.5 rounded-full"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 95%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-slate-800 text-lg mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-stairs text-slate-400"></i> CareNexus 認定ステップ
+                </h3>
+                
+                <div class="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:to-slate-200">
                     
-                    <div class="w-full lg:w-1/3 flex flex-col gap-4">
-                        <h3 class="font-bold text-slate-700 text-sm flex items-center gap-2"><i class="fa-solid fa-route"></i> 本日の訪問予定 (担当: 新人A子)</h3>
-                        
-                        <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-l-blue-500 cursor-pointer ring-2 ring-blue-500 ring-offset-2 transition">
-                            <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-bold text-slate-800">佐藤 一郎 様 (10:00)</h4>
-                                <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded font-bold">記録未完了</span>
-                            </div>
-                            <div class="bg-blue-50 border border-blue-100 p-2.5 rounded text-xs mt-3">
-                                <p class="font-bold text-blue-800 mb-1"><i class="fa-solid fa-bullseye text-blue-600"></i> ターゲット: 特別管理加算(Ⅱ)</p>
-                                <p class="text-slate-600 leading-relaxed">過去履歴から算定対象です。<strong class="text-red-500">バルーン挿入部の皮膚状態</strong>を必ず確認し、右の画面で記録してください。</p>
-                            </div>
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            2
                         </div>
-
-                        <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-200 opacity-60 hover:opacity-100 transition cursor-pointer">
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border-2 border-blue-400 bg-white shadow-sm">
                             <div class="flex justify-between items-start mb-2">
-                                <h4 class="font-bold text-slate-800">高橋 次郎 様 (13:30)</h4>
-                                <span class="bg-slate-100 text-slate-500 text-[10px] px-2 py-0.5 rounded font-bold">訪問前</span>
+                                <h4 class="font-bold text-blue-700 text-lg">Lv.2: アドバンス・ビギナー</h4>
+                                <span class="bg-blue-50 text-blue-600 text-[10px] px-2 py-0.5 rounded font-bold">次の目標</span>
                             </div>
-                            <div class="text-xs text-slate-500 mt-2">
-                                <p><i class="fa-solid fa-bullseye"></i> ターゲット: ターミナルケア加算</p>
-                            </div>
+                            <p class="text-xs text-slate-500 mb-3">基本的な加算要件を理解し、To-Doツールを補助的に使いながら自立して記録できる状態。</p>
+                            <ul class="text-xs font-bold text-slate-700 space-y-1.5 bg-slate-50 p-3 rounded">
+                                <li class="flex items-center gap-2"><i class="fa-regular fa-square-check text-green-500 text-sm"></i> 特管加算のTo-Do消化率 90%以上（達成！）</li>
+                                <li class="flex items-center gap-2"><i class="fa-regular fa-square text-slate-300 text-sm"></i> ターミナルケア加算の要件理解と実践</li>
+                                <li class="flex items-center gap-2"><i class="fa-regular fa-square text-slate-300 text-sm"></i> 計画書・報告書の下書き作成</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="w-full lg:w-2/3 bg-white rounded-xl shadow-sm border border-slate-200 flex flex-col overflow-hidden">
-                        <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex justify-between items-center">
-                            <h3 class="font-bold text-slate-800 text-sm flex items-center gap-2">
-                                <i class="fa-solid fa-pen-to-square text-blue-600"></i> 佐藤 一郎 様 の看護記録（下書き）
-                            </h3>
-                            <span class="text-xs text-slate-500"><i class="fa-brands fa-markdown"></i> iBow/カイポケ 転記用</span>
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-green-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            1
                         </div>
-                        
-                        <div class="p-6 flex-1 flex flex-col">
-                            <label class="block text-xs font-bold text-slate-500 mb-2">現場での記録を入力してください</label>
-                            <textarea id="nurse-record" class="w-full h-32 p-4 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition resize-none" placeholder="ここに訪問記録を入力..."></textarea>
-
-                            <div class="mt-4 flex justify-end">
-                                <button id="btn-ai-check" onclick="runAiCheck()" class="bg-slate-800 hover:bg-slate-900 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition flex items-center gap-2">
-                                    <i class="fa-solid fa-wand-magic-sparkles"></i> AI 加算要件チェックを実行
-                                </button>
-                            </div>
-
-                            <div id="ai-feedback-area" class="mt-6 hidden flex-col gap-4 border-t border-slate-100 pt-6">
-                                
-                                <div id="ai-loading" class="flex items-center gap-3 text-blue-600 text-sm font-bold hidden">
-                                    <i class="fa-solid fa-robot text-xl"></i>
-                                    <span>算定ルールと照合中...</span>
-                                    <div class="typing-indicator flex gap-1 ml-2"><span></span><span></span><span></span></div>
-                                </div>
-
-                                <div id="ai-error" class="bg-red-50 border border-red-200 rounded-xl p-5 hidden relative overflow-hidden">
-                                    <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-red-500"></div>
-                                    <div class="flex gap-4">
-                                        <div class="bg-white p-2 rounded-full h-10 w-10 flex items-center justify-center shadow-sm text-red-500 flex-shrink-0">
-                                            <i class="fa-solid fa-robot text-xl"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-red-700 text-sm mb-1">⚠️ 特別管理加算(Ⅱ)の要件を満たしていません！</h4>
-                                            <p class="text-slate-700 text-sm leading-relaxed mb-3">
-                                                「バルーン問題なし」という記載だけでは、監査で不備（返戻）となります。<br>
-                                                算定ルール上、以下の情報を追記する必要があります。
-                                            </p>
-                                            <ul class="text-sm font-bold text-red-600 bg-white px-4 py-2 rounded-lg border border-red-100 inline-block">
-                                                <li>・挿入部の皮膚状態（発赤や浸出液の有無）</li>
-                                                <li>・尿の性状（混濁の有無）</li>
-                                            </ul>
-                                            <p class="text-xs text-slate-500 mt-3"><i class="fa-solid fa-lightbulb text-yellow-500"></i> 上のテキストボックスに追記して、再度チェックボタンを押してください。</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="ai-success" class="bg-green-50 border border-green-200 rounded-xl p-5 hidden relative overflow-hidden">
-                                    <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-green-500"></div>
-                                    <div class="flex gap-4">
-                                        <div class="bg-white p-2 rounded-full h-10 w-10 flex items-center justify-center shadow-sm text-green-500 flex-shrink-0">
-                                            <i class="fa-solid fa-check text-xl"></i>
-                                        </div>
-                                        <div class="flex-1">
-                                            <h4 class="font-bold text-green-800 text-sm mb-1">✅ 完璧です！算定要件をクリアしました。</h4>
-                                            <p class="text-green-700 text-sm mb-4">アセスメントが正確に記録されています。このままレセコンに転記してください。</p>
-                                            
-                                            <div class="flex gap-3">
-                                                <button onclick="copyToClipboard()" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition flex items-center gap-2">
-                                                    <i class="fa-regular fa-copy"></i> テキストをコピー
-                                                </button>
-                                                <button onclick="finishTask()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition flex items-center gap-2">
-                                                    <i class="fa-solid fa-cloud-arrow-up"></i> 記録完了（ダッシュボードへ反映）
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-200 bg-white opacity-70">
+                            <h4 class="font-bold text-slate-700 text-lg mb-1">Lv.1: ノービス（現在地）</h4>
+                            <p class="text-xs text-slate-500">To-Doナビに沿って、指示されたアセスメント項目を確実に実施・記録できる状態。</p>
                         </div>
                     </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-300 text-slate-500 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            3
+                        </div>
+                        <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-200 bg-slate-50 opacity-60">
+                            <h4 class="font-bold text-slate-500 text-lg mb-1">Lv.3: コンピテント（独り立ち）</h4>
+                            <p class="text-xs text-slate-400">To-Doナビなしでも要件を網羅でき、自ら新たな加算算定の提案ができる状態。</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
         </div>
     </main>
 
-    <div id="toast" class="fixed bottom-5 right-5 bg-slate-800 text-white px-6 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 z-50">
-        <i class="fa-solid fa-check-circle text-green-400 text-lg"></i>
-        <p class="text-sm font-bold" id="toast-msg">コピーしました。レセコンに貼り付けてください。</p>
-    </div>
-
     <script>
-        // Set initial test data
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById('nurse-record').value = "10:00訪問。バイタル変わりなし。\nバルーン問題なし。尿も綺麗でした。";
-        });
-
         // Navigation Logic
         function navigate(viewId) {
-            document.getElementById('view-dashboard').classList.add('hidden');
-            document.getElementById('view-aicoach').classList.add('hidden');
+            document.getElementById('view-todo').classList.add('hidden');
+            document.getElementById('view-ladder').classList.add('hidden');
             document.getElementById(`view-${viewId}`).classList.remove('hidden');
             
-            const navDash = document.getElementById('nav-dashboard');
-            const navCoach = document.getElementById('nav-aicoach');
+            const navTodo = document.getElementById('nav-todo');
+            const navLadder = document.getElementById('nav-ladder');
             
-            navDash.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors';
-            navCoach.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50 transition-colors relative';
+            navTodo.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-600 hover:bg-slate-50 transition-colors';
+            navLadder.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold text-slate-600 hover:bg-slate-50 transition-colors';
             
-            if (viewId === 'dashboard') {
-                navDash.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-blue-50 text-blue-700 transition-colors';
-            } else if (viewId === 'aicoach') {
-                navCoach.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-blue-50 text-blue-700 transition-colors relative';
+            if (viewId === 'todo') {
+                navTodo.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-blue-700 transition-colors';
+            } else if (viewId === 'ladder') {
+                navLadder.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-bold bg-blue-50 text-blue-700 transition-colors';
             }
         }
 
-        // AI Check Simulation State
-        let checkStep = 0; 
+        // To-Do Progress Logic
+        function updateProgress() {
+            const totalTasks = 3;
+            let checkedTasks = 0;
+            
+            if(document.getElementById('task1').checked) checkedTasks++;
+            if(document.getElementById('task2').checked) checkedTasks++;
+            if(document.getElementById('task3').checked) checkedTasks++;
 
-        function runAiCheck() {
-            const textarea = document.getElementById('nurse-record');
-            const feedbackArea = document.getElementById('ai-feedback-area');
-            const loading = document.getElementById('ai-loading');
-            const errorBox = document.getElementById('ai-error');
-            const successBox = document.getElementById('ai-success');
-            const btn = document.getElementById('btn-ai-check');
+            // Update text and bar
+            document.getElementById('progress-text').innerText = checkedTasks;
+            const percentage = (checkedTasks / totalTasks) * 100;
+            document.getElementById('progress-bar').style.width = percentage + '%';
 
-            // Reset UI
-            feedbackArea.classList.remove('hidden');
-            errorBox.classList.add('hidden');
-            successBox.classList.add('hidden');
-            loading.classList.remove('hidden');
-            btn.disabled = true;
-            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            // Button state
+            const btn = document.getElementById('btn-complete');
+            const msg = document.getElementById('status-msg');
 
-            setTimeout(() => {
-                loading.classList.add('hidden');
+            if (checkedTasks === totalTasks) {
                 btn.disabled = false;
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
-
-                if (checkStep === 0) {
-                    // Step 1: Show Error (AI Correction)
-                    errorBox.classList.remove('hidden');
-                    errorBox.classList.add('fade-in');
-                    // Guide user to update text
-                    textarea.value = "10:00訪問。バイタル変わりなし。\nバルーン問題なし、挿入部の発赤や浸出液なし。\n尿は淡黄色で混濁なし。スムーズに流出している。";
-                    textarea.classList.add('ring-2', 'ring-blue-400', 'bg-blue-50');
-                    setTimeout(() => textarea.classList.remove('ring-2', 'ring-blue-400', 'bg-blue-50'), 1500);
-                    checkStep = 1;
-                    btn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> 修正して再チェック';
-                } else {
-                    // Step 2: Show Success
-                    successBox.classList.remove('hidden');
-                    successBox.classList.add('fade-in');
-                    btn.classList.add('hidden'); // Hide check button on success
-                    textarea.disabled = true;
-                    textarea.classList.add('bg-slate-100', 'text-slate-500');
-                }
-            }, 1200);
-        }
-
-        function showToast(msg) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toast-msg').innerText = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0'); }, 3000);
-        }
-
-        function copyToClipboard() {
-            // In a real app, this would use navigator.clipboard
-            showToast("コピーしました。お使いのレセコンに貼り付けてください。");
-        }
-
-        function finishTask() {
-            showToast("記録完了！ダッシュボードの「教育効果」に反映されました。");
-            setTimeout(() => {
-                navigate('dashboard');
-                // Reset for demo purposes
-                checkStep = 0;
-                document.getElementById('btn-ai-check').classList.remove('hidden');
-                document.getElementById('btn-ai-check').innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> AI 加算要件チェックを実行';
-                document.getElementById('ai-feedback-area').classList.add('hidden');
-                document.getElementById('ai-success').classList.add('hidden');
-                document.getElementById('nurse-record').disabled = false;
-                document.getElementById('nurse-record').classList.remove('bg-slate-100', 'text-slate-500');
-                document.getElementById('nurse-record').value = "10:00訪問。バイタル変わりなし。\nバルーン問題なし。尿も綺麗でした。";
-            }, 1500);
+                btn.className = 'bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-md transition-all flex items-center gap-2 transform hover:scale-105';
+                msg.innerHTML = '<span class="text-green-500"><i class="fa-solid fa-check-circle mr-1"></i>全ての要件を確認しました！</span>';
+                document.getElementById('progress-bar').className = 'bg-green-500 h-2.5 rounded-full transition-all duration-500';
+            } else {
+                btn.disabled = true;
+                btn.className = 'bg-slate-200 text-slate-400 px-6 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center gap-2 cursor-not-allowed';
+                msg.innerText = '未完了の項目があります';
+                document.getElementById('progress-bar').className = 'bg-blue-500 h-2.5 rounded-full transition-all duration-500';
+            }
         }
     </script>
 </body>
