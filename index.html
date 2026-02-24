@@ -64,13 +64,13 @@
     <div id="login-view" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-slate-100 to-primary-50">
         <div class="w-full max-w-md p-10 glass rounded-3xl shadow-xl shadow-slate-200 text-center fade-in border border-white">
             <div class="flex justify-center mb-6">
-                <img src="CareNexuslogo.png" alt="CareNexus Logo" class="h-16 w-auto object-contain" onerror="this.outerHTML='<h1 class=\'text-4xl font-black text-primary-600\'>CareNexus</h1>'">
+                <div class="text-4xl font-black text-primary-600 tracking-tighter">Care<span class="text-slate-800">Nexus</span></div>
             </div>
-            <p class="text-slate-500 text-sm mb-8 font-medium">訪問看護 OJT & 収益最大化プラットフォーム</p>
+            <p class="text-slate-500 text-sm mb-8 font-medium">訪問看護 収益最大化 & OJTプラットフォーム</p>
             
             <div class="space-y-4 text-left">
                 <div>
-                    <input type="password" id="pin-input" placeholder="PINコードを入力 (0000)" 
+                    <input type="password" id="pin-input" placeholder="PINコード (0000 または admin)" 
                         class="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all text-lg tracking-widest text-center shadow-inner"
                         onkeypress="if(event.key === 'Enter') handleLogin()">
                 </div>
@@ -79,6 +79,9 @@
                     システムにログイン <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
+            <div class="mt-6 text-xs text-slate-400">
+                <p>一般ナース: <span class="font-bold text-slate-600">0000</span> | 管理者: <span class="font-bold text-slate-600">admin</span></p>
+            </div>
         </div>
     </div>
 
@@ -86,7 +89,7 @@
         <aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between z-20 shadow-sm transition-all duration-300">
             <div>
                 <div class="h-16 flex items-center px-6 border-b border-slate-100">
-                    <img src="CareNexuslogo.png" alt="CareNexus Logo" class="h-8 w-auto object-contain" onerror="this.outerHTML='<h1 class=\'text-xl font-black text-primary-600\'>CareNexus</h1>'">
+                    <div class="text-xl font-black text-primary-600 tracking-tighter">Care<span class="text-slate-800">Nexus</span></div>
                 </div>
                 <nav id="sidebar-nav" class="p-4 space-y-2 mt-2"></nav>
             </div>
@@ -152,7 +155,6 @@
                         </div>
 
                         <div id="scan-results" class="hidden grid-cols-1 lg:grid-cols-12 gap-6 fade-in">
-                            
                             <div class="lg:col-span-5 bg-white rounded-3xl shadow-sm border border-slate-200 p-6 flex flex-col h-[600px]">
                                 <div class="flex justify-between items-center mb-4">
                                     <h3 class="font-bold text-slate-800"><i class="fa-regular fa-file-pdf text-red-500 mr-2"></i> 解析ドキュメント</h3>
@@ -160,20 +162,12 @@
                                 </div>
                                 <div class="flex-1 bg-slate-50 rounded-xl border border-slate-200 p-4 overflow-y-auto relative text-[10px] text-slate-500 font-serif shadow-inner">
                                     <h4 class="text-center font-bold text-slate-800 text-sm mb-4 border-b border-slate-300 pb-2">訪問看護指示書</h4>
-                                    <div class="grid grid-cols-2 gap-2 mb-4">
-                                        <div><span class="inline-block w-16">患者氏名:</span>高橋 陽子</div>
-                                        <div><span class="inline-block w-16">生年月日:</span>S23.5.12</div>
-                                    </div>
                                     <div class="mb-4">
                                         <span class="block border-b border-slate-300 mb-1">主たる傷病名</span>
                                         <div class="relative inline-block">
                                             筋萎縮性側索硬化症 (ALS)
                                             <div class="absolute -inset-1 border-2 border-amber-400 bg-amber-400/20 rounded z-10 animate-pulse"></div>
                                         </div>
-                                    </div>
-                                    <div class="mb-4">
-                                        <span class="block border-b border-slate-300 mb-1">装着・使用医療機器等</span>
-                                        ☑ 気管カニューレ　☐ 胃瘻　☑ 人工呼吸器
                                     </div>
                                     <div class="mb-4">
                                         <span class="block border-b border-slate-300 mb-1">留意事項・特記事項</span>
@@ -191,62 +185,28 @@
                                         <div class="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                                         <h2 class="text-xl font-black text-slate-800">AI 加算ポテンシャル提案</h2>
                                     </div>
-                                    <p class="text-sm text-slate-500 mt-2">指示書の記載内容とCSV基本情報から、算定可能な加算を抽出しました。今月の目標に組み込むものを選択してください。</p>
+                                    <p class="text-sm text-slate-500 mt-2">今月の目標に組み込むものを選択してください。</p>
                                 </div>
-
                                 <div class="flex-1 overflow-y-auto p-6 space-y-4 bg-slate-50/50">
-                                    
                                     <div class="bg-white rounded-2xl border border-amber-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
                                         <label class="flex items-start p-5 cursor-pointer group">
                                             <input type="checkbox" checked class="mt-1 w-6 h-6 text-primary-600 bg-slate-100 border-slate-300 rounded focus:ring-primary-500 cursor-pointer">
                                             <div class="ml-4 flex-1">
                                                 <div class="flex justify-between items-start mb-2">
                                                     <h3 class="font-bold text-slate-800 text-lg">特別管理加算 (Ⅰ)</h3>
-                                                    <span class="bg-amber-100 text-amber-700 text-[10px] font-black px-2 py-1 rounded border border-amber-200">高単価機会</span>
+                                                    <span class="bg-amber-100 text-amber-700 text-[10px] font-black px-2 py-1 rounded border border-amber-200">高単価</span>
                                                 </div>
                                                 <div class="bg-amber-50 rounded-xl p-3 border-l-4 border-amber-400 text-sm">
                                                     <p class="text-amber-800 font-bold mb-1"><i class="fa-solid fa-microchip mr-1"></i> AI 推論根拠</p>
-                                                    <p class="text-slate-700 text-xs">指示書の主病名に<strong class="text-amber-600">「筋萎縮性側索硬化症(ALS)」</strong>の記載があり、かつ<strong class="text-amber-600">「気管カニューレ」</strong>のチェックを検知しました。厚生労働省が定める別表第8の要件を完全に満たしています。</p>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <div class="bg-white rounded-2xl border border-primary-200 shadow-sm overflow-hidden transition-all hover:shadow-md">
-                                        <label class="flex items-start p-5 cursor-pointer group">
-                                            <input type="checkbox" checked class="mt-1 w-6 h-6 text-primary-600 bg-slate-100 border-slate-300 rounded focus:ring-primary-500 cursor-pointer">
-                                            <div class="ml-4 flex-1">
-                                                <div class="flex justify-between items-start mb-2">
-                                                    <h3 class="font-bold text-slate-800 text-lg">複数名訪問看護加算</h3>
-                                                </div>
-                                                <div class="bg-primary-50 rounded-xl p-3 border-l-4 border-primary-400 text-sm">
-                                                    <p class="text-primary-800 font-bold mb-1"><i class="fa-solid fa-microchip mr-1"></i> AI 推論根拠</p>
-                                                    <p class="text-slate-700 text-xs">特記事項の<strong class="text-primary-600">「介護者の疲労が著しい」</strong>というテキストと、CSVデータの<strong class="text-primary-600">「要介護4」</strong>を掛け合わせて解析しました。身体的理由だけでなく、家族の介護負担軽減を目的とした複数名訪問が正当化されます。</p>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all hover:shadow-md opacity-80 hover:opacity-100">
-                                        <label class="flex items-start p-5 cursor-pointer group">
-                                            <input type="checkbox" class="mt-1 w-6 h-6 text-primary-600 bg-slate-100 border-slate-300 rounded focus:ring-primary-500 cursor-pointer">
-                                            <div class="ml-4 flex-1">
-                                                <div class="flex justify-between items-start mb-2">
-                                                    <h3 class="font-bold text-slate-800 text-lg">長時間訪問看護加算</h3>
-                                                    <span class="text-xs text-slate-400 font-bold">提案スコア: 中</span>
-                                                </div>
-                                                <div class="bg-slate-50 rounded-xl p-3 border-l-4 border-slate-400 text-sm">
-                                                    <p class="text-slate-600 font-bold mb-1"><i class="fa-solid fa-microchip mr-1"></i> AI 推論根拠</p>
-                                                    <p class="text-slate-600 text-xs">別表第7に該当するため算定権限はありますが、ステーションの人員リソース状況（管理者ダッシュボード連携）を考慮し、実行可能かステーション内で検討してください。</p>
+                                                    <p class="text-slate-700 text-xs">指示書の主病名に<strong class="text-amber-600">「ALS」</strong>の記載があり、別表第8を満たしています。</p>
                                                 </div>
                                             </div>
                                         </label>
                                     </div>
                                 </div>
-
                                 <div class="p-6 bg-white border-t border-slate-100 flex justify-between items-center">
                                     <p class="text-sm font-bold text-slate-500">選択した加算の要件をTo-Do化します</p>
-                                    <button class="bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-xl text-sm font-bold shadow-md transition-all flex items-center gap-2" onclick="alert('選択した加算要件に基づく個別To-Doリストを生成し、明日の訪問スケジュールにセットしました。')">
+                                    <button class="bg-slate-800 hover:bg-slate-900 text-white px-8 py-3 rounded-xl text-sm font-bold shadow-md transition-all flex items-center gap-2" onclick="alert('To-Doリストを生成しました'); navTo('todo', '本日の訪問 To-Do');">
                                         <i class="fa-solid fa-list-check"></i> To-Doを生成して確定
                                     </button>
                                 </div>
@@ -258,29 +218,181 @@
                         <div class="mb-6 flex justify-between items-end">
                             <div>
                                 <h1 class="text-2xl font-bold text-slate-800">本日の訪問 To-Do</h1>
-                                <p class="text-slate-500 text-sm mt-1">レセコン入力前に、加算要件の「観察・記録漏れ」がないかチェックしましょう。</p>
+                                <p class="text-slate-500 text-sm mt-1">プランニングで設定された加算要件に基づく、必須の観察・記録項目です。</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 bg-white border border-slate-200 text-slate-600 text-sm font-bold rounded-lg shadow-sm hover:bg-slate-50">午前</button>
+                                <button class="px-4 py-2 bg-slate-800 text-white text-sm font-bold rounded-lg shadow-sm">午後</button>
                             </div>
                         </div>
-                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-slate-200 text-center">
-                            <i class="fa-solid fa-clipboard-check text-4xl text-emerald-400 mb-4"></i>
-                            <h2 class="text-xl font-bold text-slate-700">現在のTo-Doリストです</h2>
-                            <p class="text-slate-500 mt-2">（※前回のデモ画面と同じ構成のため、ここでは「指示書解析・プランニング」をお試しください）</p>
+
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-6">
+                            <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-bold">高</div>
+                                    <div>
+                                        <h3 class="font-bold text-slate-800">高橋 陽子 様 <span class="text-xs font-normal text-slate-500 ml-2">13:00 - 14:00</span></h3>
+                                        <div class="flex gap-2 mt-1">
+                                            <span class="text-[10px] bg-amber-100 text-amber-800 px-2 py-0.5 rounded border border-amber-200 font-bold">特管加算(Ⅰ) 対象</span>
+                                            <span class="text-[10px] bg-primary-100 text-primary-800 px-2 py-0.5 rounded border border-primary-200 font-bold">複数名訪問 対象</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="text-primary-600 text-sm font-bold hover:underline">過去の記録</button>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-xs font-bold text-slate-400 mb-3 uppercase tracking-wider">必須アクション (算定要件)</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start gap-3 group">
+                                        <input type="checkbox" id="task1" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded focus:ring-primary-500 cursor-pointer">
+                                        <label for="task1" class="cursor-pointer flex-1 transition-all">
+                                            <span class="block text-slate-800 font-medium">気管カニューレの固定状態と周囲の皮膚状態の観察・記録</span>
+                                            <span class="badge-hint inline-block mt-1 text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold border border-slate-200"><i class="fa-solid fa-link"></i> 特管加算(Ⅰ) 要件</span>
+                                        </label>
+                                    </li>
+                                    <li class="flex items-start gap-3 group">
+                                        <input type="checkbox" id="task2" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded focus:ring-primary-500 cursor-pointer">
+                                        <label for="task2" class="cursor-pointer flex-1 transition-all">
+                                            <span class="block text-slate-800 font-medium">主な介護者（長女）の疲労度・睡眠状態のヒアリングと記録</span>
+                                            <span class="badge-hint inline-block mt-1 text-[10px] bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold border border-slate-200"><i class="fa-solid fa-link"></i> 複数名訪問加算 要件</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                
+                                <div class="mt-6 pt-4 border-t border-slate-100 flex justify-between items-center">
+                                    <div class="text-sm text-slate-500"><i class="fa-solid fa-circle-exclamation text-amber-500 mr-1"></i> 記録漏れは返戻のリスクになります</div>
+                                    <button class="bg-primary-50 hover:bg-primary-100 text-primary-700 px-4 py-2 rounded-lg text-sm font-bold transition-all">記録をシステムへ送信</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div id="view-chat" class="view-section hidden fade-in">
-                        <div class="mb-6"><h1 class="text-2xl font-bold text-slate-800">AI コーチ</h1></div>
-                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-slate-200 text-center">
-                            <i class="fa-solid fa-robot text-4xl text-primary-400 mb-4"></i>
-                            <h2 class="text-xl font-bold text-slate-700">AIチャット機能</h2>
-                            <p class="text-slate-500 mt-2">（※前回のデモ画面と同じ構成です）</p>
+
+                    <div id="view-chat" class="view-section hidden fade-in h-[calc(100vh-140px)] flex-col">
+                        <div class="mb-4">
+                            <h1 class="text-2xl font-bold text-slate-800">AI コーチ</h1>
+                            <p class="text-slate-500 text-sm mt-1">算定ルールの疑問や、患者の状況に対するアクションをAIに相談できます。</p>
+                        </div>
+                        
+                        <div class="flex-1 bg-white border border-slate-200 rounded-2xl shadow-sm flex flex-col overflow-hidden">
+                            <div class="flex-1 overflow-y-auto p-6 space-y-6 bg-slate-50/50" id="chat-messages">
+                                <div class="flex gap-4 max-w-3xl">
+                                    <div class="w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center shrink-0 border border-primary-200">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700">
+                                        <p>お疲れ様です！本日の訪問に関する疑問や、算定要件でわからないことはありますか？<br>例えば「田中さんの今の状態でターミナルケア加算は取れる？」など、何でも聞いてください。</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 max-w-3xl ml-auto flex-row-reverse">
+                                    <div class="w-10 h-10 rounded-full bg-slate-800 text-white flex items-center justify-center shrink-0">
+                                        <i class="fa-solid fa-user-nurse"></i>
+                                    </div>
+                                    <div class="bg-slate-800 text-white p-4 rounded-2xl rounded-tr-none shadow-sm text-sm">
+                                        <p>高橋さんの長女さんが、夜間の痰吸引でここ数日全く眠れていないそうです。精神的にもかなり限界が近そうです。</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-4 max-w-3xl">
+                                    <div class="w-10 h-10 rounded-full bg-primary-100 text-primary-600 flex items-center justify-center shrink-0 border border-primary-200">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700">
+                                        <p>ご家族の負担が深刻な状態ですね。情報ありがとうございます。</p>
+                                        <p class="mt-2">現在の「要介護4」と「ALS」の状態から、以下の対応が提案できます：</p>
+                                        <ul class="list-disc pl-5 mt-2 space-y-1 font-medium text-slate-800">
+                                            <li><span class="text-primary-600">複数名訪問看護加算</span>の適用（身体的理由だけでなく、安全確保や家族の負担軽減の観点から主治医へ打診）</li>
+                                            <li>主治医へ相談し、<span class="text-primary-600">特別指示書</span>の発行による頻回訪問・夜間訪問への切り替え</li>
+                                        </ul>
+                                        <p class="mt-2">主治医宛の「報告書・相談状」のドラフトを作成しましょうか？</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="p-4 bg-white border-t border-slate-200">
+                                <div class="relative">
+                                    <input type="text" placeholder="メッセージを入力... (例: ドラフト作成をお願いします)" class="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-4 pr-12 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:bg-white transition-all text-sm">
+                                    <button class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-primary-600 hover:bg-primary-700 text-white rounded-lg flex items-center justify-center transition-colors">
+                                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div id="view-admin" class="view-section hidden fade-in">
-                        <div class="mb-6"><h1 class="text-2xl font-bold text-slate-800">管理者ダッシュボード</h1></div>
-                        <div class="bg-white p-12 rounded-3xl shadow-sm border border-slate-200 text-center">
-                            <i class="fa-solid fa-chart-pie text-4xl text-purple-400 mb-4"></i>
-                            <h2 class="text-xl font-bold text-slate-700">HR・収益分析ダッシュボード</h2>
-                            <p class="text-slate-500 mt-2">（※前回のデモ画面と同じ構成です）</p>
+                        <div class="mb-6 flex justify-between items-end">
+                            <div>
+                                <h1 class="text-2xl font-bold text-slate-800">HR・収益俯瞰ダッシュボード</h1>
+                                <p class="text-slate-500 text-sm mt-1">ステーション全体の算定状況と、スタッフのスキル（記録精度）を可視化します。</p>
+                            </div>
+                            <button class="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-sm font-bold shadow-sm hover:bg-slate-50"><i class="fa-solid fa-download mr-1"></i> レポート出力</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">今月の予測算定額</p>
+                                <div class="flex items-baseline gap-2">
+                                    <h3 class="text-3xl font-black text-slate-800">¥1,850,000</h3>
+                                    <span class="text-emerald-500 text-sm font-bold"><i class="fa-solid fa-arrow-trend-up"></i> +5.2%</span>
+                                </div>
+                            </div>
+                            <div class="bg-gradient-to-br from-amber-50 to-white p-6 rounded-2xl shadow-sm border border-amber-200">
+                                <p class="text-xs font-bold text-amber-600 uppercase tracking-wider mb-1">未取得の算定ポテンシャル (AI推論)</p>
+                                <div class="flex items-baseline gap-2">
+                                    <h3 class="text-3xl font-black text-amber-700">4<span class="text-lg">件</span></h3>
+                                    <span class="text-amber-600 text-sm font-bold">約 ¥55,000 / 月</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">スタッフ記録完了率 (To-Do準拠)</p>
+                                <div class="flex items-baseline gap-2">
+                                    <h3 class="text-3xl font-black text-slate-800">94.5%</h3>
+                                    <span class="text-slate-500 text-sm font-medium">前月比 +2.1%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                                <h3 class="font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2"><i class="fa-solid fa-magnifying-glass-dollar text-primary-500 mr-2"></i> 算定ギャップ（取りこぼし候補）</h3>
+                                <div class="space-y-4">
+                                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <p class="font-bold text-slate-800">鈴木 一郎 様</p>
+                                            <span class="bg-amber-100 text-amber-800 text-[10px] px-2 py-1 rounded font-bold">特別管理加算</span>
+                                        </div>
+                                        <p class="text-xs text-slate-600 mb-3">先週の退院サマリー解析にて「膀胱留置カテーテル」を検知しましたが、現在のプランに特管加算が設定されていません。</p>
+                                        <button class="text-xs bg-white border border-slate-300 px-3 py-1.5 rounded hover:bg-slate-100 font-bold text-slate-700">プランを見直す</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+                                <h3 class="font-bold text-slate-800 mb-4 border-b border-slate-100 pb-2"><i class="fa-solid fa-user-graduate text-purple-500 mr-2"></i> 看護職員 記録・アセスメントスキル</h3>
+                                <p class="text-xs text-slate-500 mb-4">AIが日々のTo-Do消化率と記録の質（SOAPの具体性など）を評価したスコアです。</p>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="font-bold text-slate-700">佐藤 ナース (経験5年)</span>
+                                            <span class="text-emerald-600 font-bold">A (優秀)</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2">
+                                            <div class="bg-emerald-500 h-2 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                        <p class="text-[10px] text-slate-400 mt-1">加算要件の記録漏れ0件。アセスメントのテキストが非常に具体的です。</p>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <span class="font-bold text-slate-700">山田 ナース (経験1年)</span>
+                                            <span class="text-amber-600 font-bold">C (要指導)</span>
+                                        </div>
+                                        <div class="w-full bg-slate-100 rounded-full h-2">
+                                            <div class="bg-amber-400 h-2 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                        <p class="text-[10px] text-slate-400 mt-1">「複数名訪問加算」における家族状況の記録が不足しがちです。AIコーチの利用を推奨します。</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -290,14 +402,18 @@
     </div>
 
     <script>
-        let currentUserRole = '';
+        let currentUserRole = ''; // 'user' or 'admin'
 
+        // ===== Authentication & Navigation Logic =====
         function handleLogin() {
             const pin = document.getElementById('pin-input').value;
             const error = document.getElementById('login-error');
             
-            if (pin === '0000' || pin === 'admin') {
-                currentUserRole = pin === '0000' ? 'user' : 'admin';
+            if (pin === '0000') {
+                currentUserRole = 'user';
+                initApp();
+            } else if (pin === 'admin') {
+                currentUserRole = 'admin';
                 initApp();
             } else {
                 error.classList.remove('hidden');
@@ -310,8 +426,9 @@
             document.getElementById('login-view').classList.add('fade-in');
             document.getElementById('pin-input').value = '';
             document.getElementById('login-error').classList.add('hidden');
+            currentUserRole = '';
             
-            // Reset Planning view state
+            // Reset Planning view state for next demo
             document.getElementById('upload-zone').classList.remove('hidden');
             document.getElementById('scan-loading').classList.add('hidden');
             document.getElementById('scan-results').classList.remove('grid');
@@ -326,36 +443,47 @@
             const profile = document.getElementById('user-profile');
             navContainer.innerHTML = '';
             
-            // Common Navigation Structure for this Demo
-            navContainer.innerHTML += `
+            // Core Navigation (Visible to all)
+            let navHTML = `
                 <p class="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-2">計画・アセスメント</p>
-                <button onclick="navTo('planning', '指示書 AI 解析 & プランニング')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-primary-50 text-primary-700 transition-colors nav-btn" data-target="planning">
+                <button onclick="navTo('planning', '指示書 AI 解析 & プランニング')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn" data-target="planning">
                     <i class="fa-solid fa-wand-magic-sparkles w-5 text-lg"></i> 指示書解析・プラン
                 </button>
 
                 <p class="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-4">現場ワークフロー</p>
-                <button onclick="navTo('todo', '算定 To-Do ナビ')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn" data-target="todo">
+                <button onclick="navTo('todo', '本日の訪問 To-Do')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn" data-target="todo">
                     <i class="fa-solid fa-list-check w-5 text-lg"></i> 本日の To-Do
                 </button>
                 <button onclick="navTo('chat', 'AI コーチ')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn" data-target="chat">
                     <i class="fa-solid fa-robot w-5 text-lg"></i> AI サポート相談
                 </button>
-                
-                <p class="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-4">マネジメント</p>
-                <button onclick="navTo('admin', '管理者ダッシュボード')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn" data-target="admin">
-                    <i class="fa-solid fa-chart-pie w-5 text-lg"></i> HR / 収益俯瞰
-                </button>
             `;
 
+            // Admin Only Navigation
+            if (currentUserRole === 'admin') {
+                navHTML += `
+                    <p class="px-4 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-4">マネジメント</p>
+                    <button onclick="navTo('admin', 'HR・収益俯瞰ダッシュボード')" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn" data-target="admin">
+                        <i class="fa-solid fa-chart-pie w-5 text-lg"></i> 管理者ダッシュボード
+                    </button>
+                `;
+            }
+
+            navContainer.innerHTML = navHTML;
+
+            // Set Profile Header based on role
+            const roleText = currentUserRole === 'admin' ? 'ステーション管理者' : '一般看護師';
+            const iconColor = currentUserRole === 'admin' ? 'bg-purple-600' : 'bg-slate-800';
             profile.innerHTML = `
-                <div class="h-10 w-10 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-sm"><i class="fa-solid fa-user-nurse"></i></div>
+                <div class="h-10 w-10 rounded-full ${iconColor} text-white flex items-center justify-center font-bold text-sm"><i class="fa-solid fa-user-nurse"></i></div>
                 <div class="text-xs">
                     <p class="font-bold text-slate-700">デモ ユーザー</p>
-                    <p class="text-slate-500 font-medium">ステーション管理者</p>
+                    <p class="text-slate-500 font-medium">${roleText}</p>
                 </div>
                 <i class="fa-solid fa-right-from-bracket ml-auto text-slate-300"></i>
             `;
             
+            // Default View
             navTo('planning', '指示書 AI 解析 & 加算プランニング');
         }
 
@@ -373,13 +501,12 @@
             });
         }
 
-        // --- NEW: Scanner Flow Simulation ---
+        // ===== Scanner Flow Simulation (Planning View) =====
         function simulateUpload() {
             document.getElementById('upload-zone').classList.add('hidden');
             document.getElementById('scan-loading').classList.remove('hidden');
             document.getElementById('scan-loading').classList.add('flex');
 
-            // Simulate loading steps
             setTimeout(() => {
                 document.getElementById('loading-text').innerText = '患者マスター(CSV)と情報を照合中...';
             }, 1500);
@@ -388,7 +515,6 @@
                 document.getElementById('loading-text').innerText = '算定要件とのマッチングを実行中...';
             }, 3000);
 
-            // Finish load and show results
             setTimeout(() => {
                 document.getElementById('scan-loading').classList.add('hidden');
                 document.getElementById('scan-loading').classList.remove('flex');
