@@ -419,13 +419,26 @@
                                     <button class="text-slate-400 hover:text-primary-600"><i class="fa-solid fa-ellipsis-vertical px-2"></i></button>
                                 </div>
                                 <ul class="space-y-4">
-                                    <li class="flex items-start gap-3">
-                                        <input type="checkbox" id="t_sato1" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
-                                        <label for="t_sato1" class="cursor-pointer flex-1 text-base text-slate-700 font-medium">疼痛コントロール（麻薬）の効果判定と副作用の有無</label>
+                                    <li class="flex flex-col gap-2">
+                                        <div class="flex items-start gap-3">
+                                            <input type="checkbox" id="t_sato1" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
+                                            <label for="t_sato1" class="cursor-pointer flex-1 text-base text-slate-700 font-medium">疼痛コントロール（麻薬）の効果判定と副作用の有無</label>
+                                        </div>
+                                        <details class="ml-8 text-xs bg-slate-50 border border-slate-200 rounded-lg overflow-hidden group/details">
+                                            <summary class="cursor-pointer p-2.5 font-bold text-slate-600 hover:bg-slate-100 transition-colors flex justify-between items-center outline-none">
+                                                <span class="flex items-center"><i class="fa-solid fa-book-medical mr-1.5 text-primary-500"></i> なぜこの記録が必要か（算定根拠）</span>
+                                                <i class="fa-solid fa-chevron-down text-slate-400 group-open/details:rotate-180 transition-transform"></i>
+                                            </summary>
+                                            <div class="p-3 text-slate-600 leading-relaxed border-t border-slate-200 bg-white">
+                                                <p><strong>ターミナルケア加算</strong>に関わる終末期の疼痛緩和において、医療用麻薬の適切な評価と主治医への報告は、質の高いケアの証明として実地指導で確認される最重要項目です。</p>
+                                            </div>
+                                        </details>
                                     </li>
-                                    <li class="flex items-start gap-3">
-                                        <input type="checkbox" id="t_sato2" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
-                                        <label for="t_sato2" class="cursor-pointer flex-1 text-base text-slate-700 font-medium">ご家族の精神的ケアの実施と記録</label>
+                                    <li class="flex flex-col gap-2">
+                                        <div class="flex items-start gap-3">
+                                            <input type="checkbox" id="t_sato2" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
+                                            <label for="t_sato2" class="cursor-pointer flex-1 text-base text-slate-700 font-medium">ご家族の精神的ケアの実施と記録</label>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -444,26 +457,61 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="mb-5 bg-sky-50 border border-sky-200 rounded-xl p-4">
+                                    <h4 class="text-sky-800 font-bold text-sm mb-2 flex items-center">
+                                        <i class="fa-solid fa-lightbulb text-amber-500 mr-2 text-lg"></i> AI事前準備ガイド（ALS / 気管カニューレ管理）
+                                    </h4>
+                                    <ul class="text-xs text-sky-700 space-y-1.5 list-disc pl-5 font-medium leading-relaxed">
+                                        <li>カニューレ周囲の皮膚トラブル（発赤・浸出液）の有無を最優先で確認してください。</li>
+                                        <li>ご家族の疲労が強いため、コミュニケーション時は傾聴を意識し、精神的サポートを心がけましょう。</li>
+                                    </ul>
+                                </div>
+
                                 <ul class="space-y-4">
-                                    <li class="flex items-start gap-3 group/task">
-                                        <input type="checkbox" id="t_taka1" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
-                                        <label for="t_taka1" class="cursor-pointer flex-1 transition-all">
-                                            <span class="block text-slate-800 font-medium text-base">気管カニューレの固定状態・周囲皮膚の観察</span>
-                                            <span class="badge-hint inline-block mt-1 text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold border border-slate-200"><i class="fa-solid fa-link"></i> 特管加算 必須要件</span>
-                                        </label>
+                                    <li class="flex flex-col gap-2 group/task">
+                                        <div class="flex items-start gap-3">
+                                            <input type="checkbox" id="t_taka1" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
+                                            <label for="t_taka1" class="cursor-pointer flex-1 transition-all">
+                                                <span class="block text-slate-800 font-medium text-base">気管カニューレの固定状態・周囲皮膚の観察</span>
+                                                <span class="badge-hint inline-block mt-1 text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold border border-slate-200"><i class="fa-solid fa-link"></i> 特管加算 必須要件</span>
+                                            </label>
+                                        </div>
+                                        <details class="ml-8 text-xs bg-slate-50 border border-slate-200 rounded-lg overflow-hidden group/details">
+                                            <summary class="cursor-pointer p-2.5 font-bold text-slate-600 hover:bg-slate-100 transition-colors flex justify-between items-center outline-none">
+                                                <span class="flex items-center"><i class="fa-solid fa-book-medical mr-1.5 text-primary-500"></i> なぜこの記録が必要か（算定根拠）</span>
+                                                <i class="fa-solid fa-chevron-down text-slate-400 group-open/details:rotate-180 transition-transform"></i>
+                                            </summary>
+                                            <div class="p-3 text-slate-600 leading-relaxed border-t border-slate-200 bg-white">
+                                                <p><strong>特別管理加算(Ⅰ)</strong>の要件を満たすため、気管カニューレの留置状態および周囲の皮膚状態の観察記録が法的に義務付けられています。記録が漏れると実地指導での指摘や報酬返戻のリスクがあります。</p>
+                                            </div>
+                                        </details>
                                     </li>
-                                    <li class="flex items-start gap-3 group/task">
-                                        <input type="checkbox" id="t_taka2" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
-                                        <label for="t_taka2" class="cursor-pointer flex-1 transition-all">
-                                            <span class="block text-slate-800 font-medium text-base">主な介護者（長女）の疲労度・睡眠状態のヒアリングと記録</span>
-                                            <span class="badge-hint inline-block mt-1 text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold border border-slate-200"><i class="fa-solid fa-link"></i> 複数名訪問 根拠記録</span>
-                                        </label>
+                                    <li class="flex flex-col gap-2 group/task">
+                                        <div class="flex items-start gap-3">
+                                            <input type="checkbox" id="t_taka2" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
+                                            <label for="t_taka2" class="cursor-pointer flex-1 transition-all">
+                                                <span class="block text-slate-800 font-medium text-base">主な介護者（長女）の疲労度・睡眠状態のヒアリングと記録</span>
+                                                <span class="badge-hint inline-block mt-1 text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded font-bold border border-slate-200"><i class="fa-solid fa-link"></i> 複数名訪問 根拠記録</span>
+                                            </label>
+                                        </div>
+                                        <details class="ml-8 text-xs bg-slate-50 border border-slate-200 rounded-lg overflow-hidden group/details">
+                                            <summary class="cursor-pointer p-2.5 font-bold text-slate-600 hover:bg-slate-100 transition-colors flex justify-between items-center outline-none">
+                                                <span class="flex items-center"><i class="fa-solid fa-book-medical mr-1.5 text-primary-500"></i> なぜこの記録が必要か（算定根拠）</span>
+                                                <i class="fa-solid fa-chevron-down text-slate-400 group-open/details:rotate-180 transition-transform"></i>
+                                            </summary>
+                                            <div class="p-3 text-slate-600 leading-relaxed border-t border-slate-200 bg-white">
+                                                <p><strong>複数名訪問看護加算</strong>の算定において、「患者の身体的理由」以外に「家族の介護負担軽減」を目的とする場合、その根拠となる介護者の疲労状態の継続的な記録が必須となります。</p>
+                                            </div>
+                                        </details>
                                     </li>
-                                    <li class="flex items-start gap-3 group/task">
-                                        <input type="checkbox" id="t_taka3" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
-                                        <label for="t_taka3" class="cursor-pointer flex-1 transition-all">
-                                            <span class="block text-slate-800 font-medium text-base">レスパイトを目的とした長時間の介入記録（90分以上）</span>
-                                        </label>
+                                    <li class="flex flex-col gap-2 group/task">
+                                        <div class="flex items-start gap-3">
+                                            <input type="checkbox" id="t_taka3" class="task-checkbox mt-1 w-5 h-5 text-primary-600 bg-slate-100 border-slate-300 rounded cursor-pointer">
+                                            <label for="t_taka3" class="cursor-pointer flex-1 transition-all">
+                                                <span class="block text-slate-800 font-medium text-base">レスパイトを目的とした長時間の介入記録（90分以上）</span>
+                                            </label>
+                                        </div>
                                     </li>
                                 </ul>
                                 <div class="mt-6 pt-4 border-t border-slate-100 text-right">
