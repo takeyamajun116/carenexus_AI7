@@ -665,51 +665,123 @@
                             </div>
 
                             <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col">
-                                <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
-                                    <h3 class="font-bold text-slate-800 flex items-center"><i class="fa-solid fa-user-graduate text-indigo-500 mr-2 text-lg"></i> 看護職員 記録・アセスメントスキル</h3>
-                                    <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-1 rounded">AI日次評価</span>
+                                <div class="flex justify-between items-start mb-4 border-b border-slate-100 pb-3">
+                                    <div>
+                                        <h3 class="font-bold text-slate-800 flex items-center"><i class="fa-solid fa-stairs text-indigo-500 mr-2 text-lg"></i> 看護職員 キャリアラダー＆AI評価</h3>
+                                        <p class="text-[10px] text-slate-500 mt-1">※東京都訪問看護キャリアラダーに準拠</p>
+                                    </div>
+                                    <span class="text-[10px] text-slate-500 bg-slate-100 px-2 py-1 rounded font-bold">AI日次更新</span>
                                 </div>
                                 
-                                <div class="space-y-5 flex-1 overflow-y-auto pr-2">
+                                <div class="space-y-6 flex-1 overflow-y-auto pr-2">
                                     <div>
-                                        <div class="flex justify-between text-sm mb-1.5">
-                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">佐</div>佐藤 ナース (経験5年)</span>
-                                            <span class="text-indigo-600 font-black text-xs bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">Rank S</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-1.5 mb-1.5"><div class="bg-indigo-500 h-1.5 rounded-full" style="width: 98%"></div></div>
-                                        <p class="text-[11px] text-slate-500 leading-tight">加算要件の記録漏れ0件。SOAPの具体性が高く、他スタッフの模範となるアセスメントテキストです。</p>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-sm mb-1.5">
-                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">鈴</div>鈴木 ナース (経験3年)</span>
-                                            <span class="text-emerald-600 font-bold text-xs bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Rank A</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-1.5 mb-1.5"><div class="bg-emerald-500 h-1.5 rounded-full" style="width: 85%"></div></div>
-                                        <p class="text-[11px] text-slate-500 leading-tight">To-Do消化率は高いですが、精神科訪問看護における病状評価の記載がやや定型的です。</p>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-sm mb-1.5">
-                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">山</div>山田 ナース (経験1年)</span>
-                                            <span class="text-amber-600 font-bold text-xs bg-amber-50 px-2 py-0.5 rounded border border-amber-100">Rank C</span>
-                                        </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-1.5 mb-1.5"><div class="bg-amber-400 h-1.5 rounded-full" style="width: 60%"></div></div>
-                                        <p class="text-[11px] text-slate-500 leading-tight">「複数名訪問加算」における家族状況の記録漏れが散見されます。AIコーチによる入力補助を強く推奨します。</p>
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between text-sm mb-1.5">
+                                        <div class="flex justify-between items-end mb-1.5">
                                             <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">伊</div>伊藤 ナース (経験8年)</span>
-                                            <span class="text-emerald-600 font-bold text-xs bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Rank A</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">レベルⅥ (熟練)</span>
+                                                <span class="text-emerald-600 font-black text-xs bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Rank A</span>
+                                            </div>
                                         </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-1.5 mb-1.5"><div class="bg-emerald-500 h-1.5 rounded-full" style="width: 90%"></div></div>
-                                        <p class="text-[11px] text-slate-500 leading-tight">アセスメントスキルは極めて高いですが、システムへの入力完了タイミングが規定より遅れる傾向にあります。</p>
+                                        <div class="flex gap-1 mb-1.5 h-1.5">
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                        </div>
+                                        <div class="text-[11px] text-slate-500 leading-tight">
+                                            <p class="text-slate-600 mb-0.5"><span class="font-bold">目標:</span> あらゆる知見を取り入れた創造的な訪問看護業務ができる。</p>
+                                            <p>【AI総評】アセスメントスキルは極めて高く地域連携にも貢献していますが、システムへの入力完了タイミングが規定より遅れる傾向にあります。</p>
+                                        </div>
                                     </div>
+
                                     <div>
-                                        <div class="flex justify-between text-sm mb-1.5">
-                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">渡</div>渡辺 ナース (経験2年)</span>
-                                            <span class="text-blue-600 font-bold text-xs bg-blue-50 px-2 py-0.5 rounded border border-blue-100">Rank B</span>
+                                        <div class="flex justify-between items-end mb-1.5">
+                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">佐</div>佐藤 ナース (経験5年)</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">レベルⅤ (中堅)</span>
+                                                <span class="text-indigo-600 font-black text-xs bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">Rank S</span>
+                                            </div>
                                         </div>
-                                        <div class="w-full bg-slate-100 rounded-full h-1.5 mb-1.5"><div class="bg-blue-400 h-1.5 rounded-full" style="width: 75%"></div></div>
-                                        <p class="text-[11px] text-slate-500 leading-tight">着実にスキルアップしています。今月はターミナルケアの記録方法について重点的に学習中です。</p>
+                                        <div class="flex gap-1 mb-1.5 h-1.5">
+                                            <div class="flex-1 bg-indigo-500 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-500 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-500 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-500 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-500 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                        </div>
+                                        <div class="text-[11px] text-slate-500 leading-tight">
+                                            <p class="text-slate-600 mb-0.5"><span class="font-bold">目標:</span> 多様な対象者に対して医療・看護技術を提供し、業務ができる。</p>
+                                            <p>【AI総評】加算要件の記録漏れ0件。SOAPの具体性が高く、他スタッフの模範となるアセスメントテキストです。</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between items-end mb-1.5">
+                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">鈴</div>鈴木 ナース (経験3年)</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">レベルⅣ (一人前)</span>
+                                                <span class="text-emerald-600 font-black text-xs bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">Rank A</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-1 mb-1.5 h-1.5">
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-500 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                        </div>
+                                        <div class="text-[11px] text-slate-500 leading-tight">
+                                            <p class="text-slate-600 mb-0.5"><span class="font-bold">目標:</span> 限定された利用者に対して医療・看護技術を提供し、業務ができる。</p>
+                                            <p>【AI総評】To-Do消化率は高いですが、精神科訪問看護における病状評価の記載がやや定型的です。</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between items-end mb-1.5">
+                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">渡</div>渡辺 ナース (経験2年)</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">レベルⅢ (独り立ち)</span>
+                                                <span class="text-blue-600 font-black text-xs bg-blue-50 px-2 py-0.5 rounded border border-blue-100">Rank B</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-1 mb-1.5 h-1.5">
+                                            <div class="flex-1 bg-blue-400 rounded-full"></div>
+                                            <div class="flex-1 bg-blue-400 rounded-full"></div>
+                                            <div class="flex-1 bg-blue-400 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                        </div>
+                                        <div class="text-[11px] text-slate-500 leading-tight">
+                                            <p class="text-slate-600 mb-0.5"><span class="font-bold">目標:</span> 指示、手順・ガイドに基づいて1人で訪問し、実践ができる。</p>
+                                            <p>【AI総評】着実にスキルアップしています。今月はターミナルケアの記録方法について重点的に学習中です。</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between items-end mb-1.5">
+                                            <span class="font-bold text-slate-700 flex items-center gap-2"><div class="w-5 h-5 rounded-full bg-slate-200 text-[10px] flex items-center justify-center">山</div>山田 ナース (経験1年)</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">レベルⅡ (新人)</span>
+                                                <span class="text-amber-600 font-black text-xs bg-amber-50 px-2 py-0.5 rounded border border-amber-100">Rank C</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-1 mb-1.5 h-1.5">
+                                            <div class="flex-1 bg-amber-400 rounded-full"></div>
+                                            <div class="flex-1 bg-amber-400 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                            <div class="flex-1 bg-slate-100 rounded-full"></div>
+                                        </div>
+                                        <div class="text-[11px] text-slate-500 leading-tight">
+                                            <p class="text-slate-600 mb-0.5"><span class="font-bold">目標:</span> 指導のもと同行訪問を中心とし、訪問看護が実践できる。</p>
+                                            <p>【AI総評】「複数名訪問加算」における家族状況の記録漏れが散見されます。AIコーチによる入力補助を強く推奨します。</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
