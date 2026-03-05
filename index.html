@@ -789,12 +789,21 @@
                     </div>
 
                     <div id="view-training" class="view-section hidden fade-in">
-                        <div class="mb-6">
-                            <h1 class="text-2xl font-bold text-slate-800">マイ・キャリア ＆ AI研修</h1>
-                            <p class="text-slate-500 text-sm mt-1">東京都キャリアラダーに基づくあなたの現在地と、次のステップに進むための推奨プログラムです。</p>
+                        <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div>
+                                <h1 class="text-2xl font-bold text-slate-800">マイ・キャリア ＆ AI研修</h1>
+                                <p class="text-slate-500 text-sm mt-1">東京都キャリアラダーに基づくあなたの現在地と、次のステップに進むための推奨プログラムです。</p>
+                            </div>
+                            <div class="flex bg-slate-100 p-1 rounded-xl shadow-inner overflow-x-auto max-w-full border border-slate-200">
+                                <button onclick="switchTrainingStaff('yamada')" id="btn-yamada" class="px-5 py-2 bg-white text-slate-800 text-xs font-bold rounded-lg shadow-sm whitespace-nowrap transition-all">山田 (Lv.Ⅱ)</button>
+                                <button onclick="switchTrainingStaff('watanabe')" id="btn-watanabe" class="px-5 py-2 text-slate-500 hover:text-slate-700 text-xs font-bold rounded-lg whitespace-nowrap transition-all">渡辺 (Lv.Ⅲ)</button>
+                                <button onclick="switchTrainingStaff('suzuki')" id="btn-suzuki" class="px-5 py-2 text-slate-500 hover:text-slate-700 text-xs font-bold rounded-lg whitespace-nowrap transition-all">鈴木 (Lv.Ⅳ)</button>
+                                <button onclick="switchTrainingStaff('sato')" id="btn-sato" class="px-5 py-2 text-slate-500 hover:text-slate-700 text-xs font-bold rounded-lg whitespace-nowrap transition-all">佐藤 (Lv.Ⅴ)</button>
+                                <button onclick="switchTrainingStaff('ito')" id="btn-ito" class="px-5 py-2 text-slate-500 hover:text-slate-700 text-xs font-bold rounded-lg whitespace-nowrap transition-all">伊藤 (Lv.Ⅵ)</button>
+                            </div>
                         </div>
 
-                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div id="training-yamada" class="training-staff-view grid grid-cols-1 lg:grid-cols-3 gap-6 fade-in">
                             <div class="lg:col-span-1 space-y-6">
                                 <div class="bg-gradient-to-b from-slate-800 to-slate-700 rounded-2xl shadow-md p-6 text-white border border-slate-800">
                                     <div class="flex items-center gap-4 mb-6">
@@ -804,7 +813,6 @@
                                             <p class="text-sm text-slate-300">経験年数: 1年</p>
                                         </div>
                                     </div>
-                                    
                                     <div class="bg-white/10 rounded-xl p-4 border border-white/10">
                                         <p class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">現在のステージ</p>
                                         <div class="flex items-baseline gap-2 mb-2">
@@ -819,87 +827,61 @@
                                             <div class="flex-1 bg-white/20 rounded-full"></div>
                                             <div class="flex-1 bg-white/20 rounded-full"></div>
                                         </div>
-                                        <p class="text-xs text-slate-200 leading-relaxed">
-                                            【公式到達目標】<br>指導のもと同行訪問を中心とし、訪問看護が実践できる。
-                                        </p>
+                                        <p class="text-xs text-slate-200 leading-relaxed">【公式到達目標】<br>指導のもと同行訪問を中心とし、訪問看護が実践できる。</p>
                                     </div>
                                 </div>
-
                                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 w-16 h-16 bg-primary-50 rounded-bl-full -mr-8 -mt-8"></div>
-                                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2">
-                                        <i class="fa-solid fa-flag text-primary-500"></i> 次の目標 (Next Step)
-                                    </h4>
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-amber-50 rounded-bl-full -mr-8 -mt-8"></div>
+                                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-flag text-amber-500"></i> 次の目標 (Next Step)</h4>
                                     <div class="flex items-baseline gap-2 mb-2">
                                         <h4 class="text-xl font-black text-slate-800">レベル Ⅲ</h4>
                                         <span class="text-xs font-bold text-slate-500">(独り立ち)</span>
                                     </div>
-                                    <p class="text-xs text-slate-600 leading-relaxed border-l-2 border-primary-300 pl-3 py-1 bg-primary-50/50">
-                                        指示、手順・ガイドに基づいて、1人で訪問し実践ができる状態を目指します。
-                                    </p>
+                                    <p class="text-xs text-slate-600 leading-relaxed border-l-2 border-amber-300 pl-3 py-1 bg-amber-50/50">指示、手順・ガイドに基づいて、1人で訪問し実践ができる状態を目指します。</p>
                                 </div>
                             </div>
-
                             <div class="lg:col-span-2">
                                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full">
                                     <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl">
                                         <div>
-                                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2">
-                                                <i class="fa-solid fa-graduation-cap text-indigo-500"></i> レベルⅢ到達 推奨プログラム
-                                            </h3>
-                                            <p class="text-xs text-slate-500 mt-1">AIがあなたの日々のTo-Do消化傾向から、今必要な学習を抽出しました。</p>
+                                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-amber-500"></i> レベルⅢ到達 推奨プログラム</h3>
+                                            <p class="text-xs text-slate-500 mt-1">AIが日々のTo-Do傾向から今必要な学習を抽出しました。</p>
                                         </div>
-                                        <span class="bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-indigo-100">進捗: 1/3 完了</span>
+                                        <span class="bg-amber-50 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-amber-100">進捗: 1/3 完了</span>
                                     </div>
-                                    
                                     <div class="p-6 space-y-4">
-                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-primary-300 hover:shadow-md transition-all group">
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-amber-300 hover:shadow-md transition-all group">
                                             <div class="flex justify-between items-start mb-3">
                                                 <div class="flex items-start gap-3">
-                                                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100">
-                                                        <i class="fa-solid fa-circle-play text-lg"></i>
-                                                    </div>
+                                                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100"><i class="fa-solid fa-circle-play text-lg"></i></div>
                                                     <div>
-                                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-primary-600 transition-colors">フィジカルアセスメント基礎（呼吸器編）</h4>
+                                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-amber-600 transition-colors">フィジカルアセスメント基礎（呼吸器編）</h4>
                                                         <p class="text-xs text-slate-500 mt-1">動画学習 / 約15分</p>
                                                     </div>
                                                 </div>
-                                                <button class="bg-primary-50 text-primary-700 hover:bg-primary-600 hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors border border-primary-200">
-                                                    続きを見る
-                                                </button>
+                                                <button class="bg-amber-50 text-amber-700 hover:bg-amber-600 hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors border border-amber-200">続きを見る</button>
                                             </div>
-                                            <div class="w-full bg-slate-100 rounded-full h-1.5">
-                                                <div class="bg-primary-500 h-1.5 rounded-full" style="width: 60%"></div>
-                                            </div>
-                                            <p class="text-[10px] text-right text-slate-400 mt-1">進捗: 60%</p>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-amber-500 h-1.5 rounded-full" style="width: 60%"></div></div>
                                         </div>
-
-                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-primary-300 hover:shadow-md transition-all group">
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-amber-300 hover:shadow-md transition-all group">
                                             <div class="flex justify-between items-center">
                                                 <div class="flex items-start gap-3">
-                                                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0 border border-indigo-100">
-                                                        <i class="fa-solid fa-comments text-lg"></i>
-                                                    </div>
+                                                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0 border border-indigo-100"><i class="fa-solid fa-comments text-lg"></i></div>
                                                     <div>
                                                         <div class="flex items-center gap-2">
-                                                            <h4 class="font-bold text-slate-800 text-sm group-hover:text-primary-600 transition-colors">急変時対応シミュレーション</h4>
-                                                            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">AI対話テスト</span>
+                                                            <h4 class="font-bold text-slate-800 text-sm group-hover:text-amber-600 transition-colors">急変時対応シミュレーション</h4>
+                                                            <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">AI対話テスト</span>
                                                         </div>
                                                         <p class="text-xs text-slate-500 mt-1">「SpO2低下時」の初期対応をAIとチャットでロールプレイします。</p>
                                                     </div>
                                                 </div>
-                                                <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors">
-                                                    開始する
-                                                </button>
+                                                <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors">開始する</button>
                                             </div>
                                         </div>
-
                                         <div class="border border-emerald-200 bg-emerald-50/30 rounded-xl p-4">
                                             <div class="flex justify-between items-center">
                                                 <div class="flex items-start gap-3">
-                                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
-                                                        <i class="fa-solid fa-check text-lg"></i>
-                                                    </div>
+                                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200"><i class="fa-solid fa-check text-lg"></i></div>
                                                     <div>
                                                         <h4 class="font-bold text-slate-800 text-sm">在宅における家族支援・コミュニケーション</h4>
                                                         <p class="text-xs text-slate-500 mt-1">確認テスト合格済（2026/02/10）</p>
@@ -908,18 +890,375 @@
                                                 <span class="text-emerald-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-award"></i> 完了</span>
                                             </div>
                                         </div>
-                                        
-                                        <div class="mt-4 pt-4 border-t border-slate-100">
-                                            <p class="text-xs text-slate-500 flex items-center gap-1.5">
-                                                <i class="fa-solid fa-circle-info text-blue-400"></i>
-                                                日々のTo-Do（算定要件）をミスなくこなすことも、レベルアップの重要な評価基準となります。
-                                            </p>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div id="training-watanabe" class="training-staff-view hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-1 space-y-6">
+                                <div class="bg-gradient-to-b from-slate-800 to-slate-700 rounded-2xl shadow-md p-6 text-white border border-slate-800">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold backdrop-blur-sm border border-white/30">渡</div>
+                                        <div>
+                                            <h3 class="text-xl font-bold">渡辺 ナース</h3>
+                                            <p class="text-sm text-slate-300">経験年数: 2年</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+                                        <p class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">現在のステージ</p>
+                                        <div class="flex items-baseline gap-2 mb-2">
+                                            <h4 class="text-2xl font-black text-blue-400">レベル Ⅲ</h4>
+                                            <span class="text-sm font-bold text-white">(独り立ち)</span>
+                                        </div>
+                                        <div class="flex gap-1 mb-3 h-1.5">
+                                            <div class="flex-1 bg-blue-400 rounded-full"></div>
+                                            <div class="flex-1 bg-blue-400 rounded-full"></div>
+                                            <div class="flex-1 bg-blue-400 rounded-full"></div>
+                                            <div class="flex-1 bg-white/20 rounded-full"></div>
+                                            <div class="flex-1 bg-white/20 rounded-full"></div>
+                                            <div class="flex-1 bg-white/20 rounded-full"></div>
+                                        </div>
+                                        <p class="text-xs text-slate-200 leading-relaxed">【公式到達目標】<br>指示、手順・ガイドに基づいて1人で訪問し、実践ができる。</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-blue-50 rounded-bl-full -mr-8 -mt-8"></div>
+                                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-flag text-blue-500"></i> 次の目標 (Next Step)</h4>
+                                    <div class="flex items-baseline gap-2 mb-2">
+                                        <h4 class="text-xl font-black text-slate-800">レベル Ⅳ</h4>
+                                        <span class="text-xs font-bold text-slate-500">(一人前)</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 leading-relaxed border-l-2 border-blue-300 pl-3 py-1 bg-blue-50/50">限定された利用者に対して医療・看護技術を提供し、業務ができる状態を目指します。</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full">
+                                    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl">
+                                        <div>
+                                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-blue-500"></i> レベルⅣ到達 推奨プログラム</h3>
+                                            <p class="text-xs text-slate-500 mt-1">AIが日々のTo-Do傾向から今必要な学習を抽出しました。</p>
+                                        </div>
+                                        <span class="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-blue-100">進捗: 1/3 完了</span>
+                                    </div>
+                                    <div class="p-6 space-y-4">
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-blue-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100"><i class="fa-solid fa-circle-play text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-blue-600 transition-colors">ターミナルケアにおける症状緩和</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">動画学習 / 約20分</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors">開始する</button>
+                                            </div>
+                                        </div>
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-blue-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-start mb-3">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0 border border-indigo-100"><i class="fa-solid fa-file-pen text-lg"></i></div>
+                                                    <div>
+                                                        <div class="flex items-center gap-2">
+                                                            <h4 class="font-bold text-slate-800 text-sm group-hover:text-blue-600 transition-colors">ケアマネジャーへの報告書作成</h4>
+                                                            <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">AI添削</span>
+                                                        </div>
+                                                        <p class="text-xs text-slate-500 mt-1">多職種連携を意識したサマリーの書き方をAIが添削します。</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors border border-blue-200">続きを見る</button>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-blue-500 h-1.5 rounded-full" style="width: 30%"></div></div>
+                                        </div>
+                                        <div class="border border-emerald-200 bg-emerald-50/30 rounded-xl p-4">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200"><i class="fa-solid fa-check text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm">感染管理の標準予防策</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">確認テスト合格済（2026/01/20）</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-emerald-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-award"></i> 完了</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="training-suzuki" class="training-staff-view hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-1 space-y-6">
+                                <div class="bg-gradient-to-b from-slate-800 to-slate-700 rounded-2xl shadow-md p-6 text-white border border-slate-800">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold backdrop-blur-sm border border-white/30">鈴</div>
+                                        <div>
+                                            <h3 class="text-xl font-bold">鈴木 ナース</h3>
+                                            <p class="text-sm text-slate-300">経験年数: 3年</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+                                        <p class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">現在のステージ</p>
+                                        <div class="flex items-baseline gap-2 mb-2">
+                                            <h4 class="text-2xl font-black text-emerald-400">レベル Ⅳ</h4>
+                                            <span class="text-sm font-bold text-white">(一人前)</span>
+                                        </div>
+                                        <div class="flex gap-1 mb-3 h-1.5">
+                                            <div class="flex-1 bg-emerald-400 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-400 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-400 rounded-full"></div>
+                                            <div class="flex-1 bg-emerald-400 rounded-full"></div>
+                                            <div class="flex-1 bg-white/20 rounded-full"></div>
+                                            <div class="flex-1 bg-white/20 rounded-full"></div>
+                                        </div>
+                                        <p class="text-xs text-slate-200 leading-relaxed">【公式到達目標】<br>限定された利用者に対して医療・看護技術を提供し、業務ができる。</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-emerald-50 rounded-bl-full -mr-8 -mt-8"></div>
+                                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-flag text-emerald-500"></i> 次の目標 (Next Step)</h4>
+                                    <div class="flex items-baseline gap-2 mb-2">
+                                        <h4 class="text-xl font-black text-slate-800">レベル Ⅴ</h4>
+                                        <span class="text-xs font-bold text-slate-500">(中堅)</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 leading-relaxed border-l-2 border-emerald-300 pl-3 py-1 bg-emerald-50/50">多様な対象者に対して医療・看護技術を提供し、後輩指導等も行える状態を目指します。</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full">
+                                    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl">
+                                        <div>
+                                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-emerald-500"></i> レベルⅤ到達 推奨プログラム</h3>
+                                            <p class="text-xs text-slate-500 mt-1">AIが日々のTo-Do傾向から今必要な学習を抽出しました。</p>
+                                        </div>
+                                        <span class="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-emerald-100">進捗: 1/3 完了</span>
+                                    </div>
+                                    <div class="p-6 space-y-4">
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-emerald-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-start mb-3">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100"><i class="fa-solid fa-circle-play text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-emerald-600 transition-colors">精神科訪問看護の病状アセスメント</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">動画学習 / 約30分</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors border border-emerald-200">続きを見る</button>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-emerald-500 h-1.5 rounded-full" style="width: 80%"></div></div>
+                                        </div>
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-emerald-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0 border border-indigo-100"><i class="fa-solid fa-comments text-lg"></i></div>
+                                                    <div>
+                                                        <div class="flex items-center gap-2">
+                                                            <h4 class="font-bold text-slate-800 text-sm group-hover:text-emerald-600 transition-colors">新人指導・同行訪問のポイント</h4>
+                                                            <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">AI対話テスト</span>
+                                                        </div>
+                                                        <p class="text-xs text-slate-500 mt-1">後輩へのフィードバック方法をAI相手にシミュレーションします。</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors">開始する</button>
+                                            </div>
+                                        </div>
+                                        <div class="border border-emerald-200 bg-emerald-50/30 rounded-xl p-4">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200"><i class="fa-solid fa-check text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm">高度な医療処置（CVポート・麻薬管理）</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">実技・確認テスト合格済（2025/11/05）</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-emerald-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-award"></i> 完了</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="training-sato" class="training-staff-view hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-1 space-y-6">
+                                <div class="bg-gradient-to-b from-slate-800 to-slate-700 rounded-2xl shadow-md p-6 text-white border border-slate-800">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold backdrop-blur-sm border border-white/30">佐</div>
+                                        <div>
+                                            <h3 class="text-xl font-bold">佐藤 ナース</h3>
+                                            <p class="text-sm text-slate-300">経験年数: 5年</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+                                        <p class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">現在のステージ</p>
+                                        <div class="flex items-baseline gap-2 mb-2">
+                                            <h4 class="text-2xl font-black text-indigo-400">レベル Ⅴ</h4>
+                                            <span class="text-sm font-bold text-white">(中堅)</span>
+                                        </div>
+                                        <div class="flex gap-1 mb-3 h-1.5">
+                                            <div class="flex-1 bg-indigo-400 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-400 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-400 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-400 rounded-full"></div>
+                                            <div class="flex-1 bg-indigo-400 rounded-full"></div>
+                                            <div class="flex-1 bg-white/20 rounded-full"></div>
+                                        </div>
+                                        <p class="text-xs text-slate-200 leading-relaxed">【公式到達目標】<br>多様な対象者に対して医療・看護技術を提供し、業務ができる。</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-indigo-50 rounded-bl-full -mr-8 -mt-8"></div>
+                                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-flag text-indigo-500"></i> 次の目標 (Next Step)</h4>
+                                    <div class="flex items-baseline gap-2 mb-2">
+                                        <h4 class="text-xl font-black text-slate-800">レベル Ⅵ</h4>
+                                        <span class="text-xs font-bold text-slate-500">(熟練)</span>
+                                    </div>
+                                    <p class="text-xs text-slate-600 leading-relaxed border-l-2 border-indigo-300 pl-3 py-1 bg-indigo-50/50">あらゆる知見を取り入れた創造的な訪問看護業務と、組織マネジメントができる状態を目指します。</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full">
+                                    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl">
+                                        <div>
+                                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-indigo-500"></i> レベルⅥ到達 推奨プログラム</h3>
+                                            <p class="text-xs text-slate-500 mt-1">AIが日々のTo-Do傾向から今必要な学習を抽出しました。</p>
+                                        </div>
+                                        <span class="bg-indigo-50 text-indigo-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-indigo-100">進捗: 1/3 完了</span>
+                                    </div>
+                                    <div class="p-6 space-y-4">
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100"><i class="fa-solid fa-circle-play text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-indigo-600 transition-colors">地域ケア会議でのファシリテーション</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">動画学習 / 約45分</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors">開始する</button>
+                                            </div>
+                                        </div>
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-indigo-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-start mb-3">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0 border border-indigo-100"><i class="fa-solid fa-comments text-lg"></i></div>
+                                                    <div>
+                                                        <div class="flex items-center gap-2">
+                                                            <h4 class="font-bold text-slate-800 text-sm group-hover:text-indigo-600 transition-colors">ステーションの収益管理・加算算定</h4>
+                                                            <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">AI対話テスト</span>
+                                                        </div>
+                                                        <p class="text-xs text-slate-500 mt-1">経営的視点での加算の取りこぼし防止策をAIと議論します。</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors border border-indigo-200">続きを見る</button>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-indigo-500 h-1.5 rounded-full" style="width: 40%"></div></div>
+                                        </div>
+                                        <div class="border border-emerald-200 bg-emerald-50/30 rounded-xl p-4">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200"><i class="fa-solid fa-check text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm">クレーム対応とコンプライアンス管理</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">確認テスト合格済（2025/10/12）</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-emerald-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-award"></i> 完了</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="training-ito" class="training-staff-view hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="lg:col-span-1 space-y-6">
+                                <div class="bg-gradient-to-b from-slate-800 to-slate-700 rounded-2xl shadow-md p-6 text-white border border-slate-800">
+                                    <div class="flex items-center gap-4 mb-6">
+                                        <div class="w-14 h-14 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold backdrop-blur-sm border border-white/30">伊</div>
+                                        <div>
+                                            <h3 class="text-xl font-bold">伊藤 ナース</h3>
+                                            <p class="text-sm text-slate-300">経験年数: 8年</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-white/10 rounded-xl p-4 border border-white/10">
+                                        <p class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">現在のステージ</p>
+                                        <div class="flex items-baseline gap-2 mb-2">
+                                            <h4 class="text-2xl font-black text-purple-400">レベル Ⅵ</h4>
+                                            <span class="text-sm font-bold text-white">(熟練)</span>
+                                        </div>
+                                        <div class="flex gap-1 mb-3 h-1.5">
+                                            <div class="flex-1 bg-purple-400 rounded-full"></div>
+                                            <div class="flex-1 bg-purple-400 rounded-full"></div>
+                                            <div class="flex-1 bg-purple-400 rounded-full"></div>
+                                            <div class="flex-1 bg-purple-400 rounded-full"></div>
+                                            <div class="flex-1 bg-purple-400 rounded-full"></div>
+                                            <div class="flex-1 bg-purple-400 rounded-full"></div>
+                                        </div>
+                                        <p class="text-xs text-slate-200 leading-relaxed">【公式到達目標】<br>あらゆる知見を取り入れた創造的な訪問看護業務ができる。</p>
+                                    </div>
+                                </div>
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full -mr-8 -mt-8"></div>
+                                    <h4 class="font-bold text-slate-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-crown text-purple-500"></i> ロールモデルの維持</h4>
+                                    <p class="text-xs text-slate-600 leading-relaxed border-l-2 border-purple-300 pl-3 py-1 bg-purple-50/50">ステーションの顔として組織マネジメントや、地域全体の教育・啓発を主導します。</p>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-2">
+                                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 flex flex-col h-full">
+                                    <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 rounded-t-2xl">
+                                        <div>
+                                            <h3 class="font-bold text-slate-800 text-lg flex items-center gap-2"><i class="fa-solid fa-graduation-cap text-purple-500"></i> 管理者・専門職向けプログラム</h3>
+                                            <p class="text-xs text-slate-500 mt-1">さらなる専門性の追求と、組織貢献のためのコンテンツです。</p>
+                                        </div>
+                                        <span class="bg-purple-50 text-purple-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-purple-100">進捗: 1/3 完了</span>
+                                    </div>
+                                    <div class="p-6 space-y-4">
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-purple-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-start mb-3">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center shrink-0 border border-red-100"><i class="fa-solid fa-circle-play text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-purple-600 transition-colors">経営戦略・人事評価制度の構築</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">動画学習 / 約60分</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-purple-50 text-purple-700 hover:bg-purple-600 hover:text-white px-4 py-2 rounded-lg text-xs font-bold transition-colors border border-purple-200">続きを見る</button>
+                                            </div>
+                                            <div class="w-full bg-slate-100 rounded-full h-1.5"><div class="bg-purple-500 h-1.5 rounded-full" style="width: 25%"></div></div>
+                                        </div>
+                                        <div class="border border-slate-200 rounded-xl p-4 hover:border-purple-300 hover:shadow-md transition-all group">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-500 flex items-center justify-center shrink-0 border border-indigo-100"><i class="fa-solid fa-file-pen text-lg"></i></div>
+                                                    <div>
+                                                        <div class="flex items-center gap-2">
+                                                            <h4 class="font-bold text-slate-800 text-sm group-hover:text-purple-600 transition-colors">看護研究・事例発表の論文作成</h4>
+                                                            <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">AI添削</span>
+                                                        </div>
+                                                        <p class="text-xs text-slate-500 mt-1">学会発表に向けた抄録の構成をAIがサポート・添削します。</p>
+                                                    </div>
+                                                </div>
+                                                <button class="bg-white text-slate-600 border border-slate-300 hover:bg-slate-50 px-4 py-2 rounded-lg text-xs font-bold transition-colors">開始する</button>
+                                            </div>
+                                        </div>
+                                        <div class="border border-emerald-200 bg-emerald-50/30 rounded-xl p-4">
+                                            <div class="flex justify-between items-center">
+                                                <div class="flex items-start gap-3">
+                                                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200"><i class="fa-solid fa-check text-lg"></i></div>
+                                                    <div>
+                                                        <h4 class="font-bold text-slate-800 text-sm">地域包括ケアシステムの推進と連携</h4>
+                                                        <p class="text-xs text-slate-500 mt-1">確認テスト合格済（2025/08/30）</p>
+                                                    </div>
+                                                </div>
+                                                <span class="text-emerald-600 text-xs font-bold flex items-center gap-1"><i class="fa-solid fa-award"></i> 完了</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -956,6 +1295,7 @@
             
             // Reset views
             resetScanner();
+            switchTrainingStaff('yamada'); // Reset training view
         }
 
         function initApp() {
@@ -1025,6 +1365,32 @@
                     btn.className = 'w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold bg-primary-50 text-primary-700 shadow-sm transition-colors nav-btn border border-primary-100/50';
                 } else {
                     btn.className = 'w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors nav-btn border border-transparent';
+                }
+            });
+        }
+
+        // ===== Training Staff Switcher Logic =====
+        function switchTrainingStaff(staffId) {
+            // Hide all staff views
+            document.querySelectorAll('.training-staff-view').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('fade-in');
+            });
+            
+            // Show selected staff view with animation
+            const targetView = document.getElementById(`training-${staffId}`);
+            targetView.classList.remove('hidden');
+            void targetView.offsetWidth; // Trigger reflow for animation
+            targetView.classList.add('fade-in');
+            
+            // Update button styles
+            const buttons = ['yamada', 'watanabe', 'suzuki', 'sato', 'ito'];
+            buttons.forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                if (id === staffId) {
+                    btn.className = 'px-5 py-2 bg-white text-slate-800 text-xs font-bold rounded-lg shadow-sm whitespace-nowrap transition-all';
+                } else {
+                    btn.className = 'px-5 py-2 text-slate-500 hover:text-slate-700 text-xs font-bold rounded-lg whitespace-nowrap transition-all';
                 }
             });
         }
